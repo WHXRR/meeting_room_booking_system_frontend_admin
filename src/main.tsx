@@ -8,6 +8,7 @@ import { MeetingMenu } from './views/menu/Menu'
 import { UserManage } from './views/user_manage/UserManage'
 import { InfoModify } from './views/info_modify/InfoModify'
 import { PasswordModify } from './views/password_modify/PasswordModify'
+import { MeetingRoomManage } from './views/meeting_room_manage/MeetingRoomManage'
 
 const routes = [
   {
@@ -21,6 +22,10 @@ const routes = [
           {
             path: 'user_manage',
             element: <UserManage />,
+          },
+          {
+            path: 'meeting_room_manage',
+            element: <MeetingRoomManage />,
           },
           {
             path: 'info_modify',

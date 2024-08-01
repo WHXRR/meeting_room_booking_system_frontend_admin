@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { MailOutlined } from '@ant-design/icons'
 import type { MenuProps } from 'antd'
 import { Menu } from 'antd'
@@ -7,13 +7,13 @@ import { useEffect } from 'react'
 type MenuItem = Required<MenuProps>['items'][number]
 const items: MenuItem[] = [
   {
-    key: '/user_manage',
+    key: '/meeting_room_manage',
     label: '会议室管理',
     icon: <MailOutlined />,
   },
   {
-    key: '/aa',
-    label: '预定管理',
+    key: '/user_manage',
+    label: '用户管理',
     icon: <MailOutlined />,
   },
   {
@@ -30,10 +30,22 @@ const items: MenuItem[] = [
 
 export function MeetingMenu() {
   const navigate = useNavigate()
+  const location = useLocation()
+
   useEffect(() => {
-    navigate('/user_manage')
+    if (location.pathname === '/') {
+      navigate('/meeting_room_manage')
+    }
   }, [])
 
+  function getSelectedKeys() {
+    if (location.pathname === '/') {
+      return ['/meeting_room_manage']
+    }
+    else {
+      return [location.pathname]
+    }
+  }
   const onClick: MenuProps['onClick'] = (e) => {
     navigate(e.key)
   }
@@ -43,7 +55,7 @@ export function MeetingMenu() {
         <Menu
           onClick={onClick}
           style={{ width: 256 }}
-          defaultSelectedKeys={['/user_manage']}
+          defaultSelectedKeys={getSelectedKeys()}
           items={items}
           className="h-full"
         />
