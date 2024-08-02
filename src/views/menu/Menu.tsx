@@ -1,5 +1,5 @@
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import { MailOutlined } from '@ant-design/icons'
+import { CarryOutOutlined, LaptopOutlined, PieChartOutlined, TeamOutlined } from '@ant-design/icons'
 import type { MenuProps } from 'antd'
 import { Menu } from 'antd'
 import { useEffect } from 'react'
@@ -9,22 +9,22 @@ const items: MenuItem[] = [
   {
     key: '/meeting_room_manage',
     label: '会议室管理',
-    icon: <MailOutlined />,
+    icon: <LaptopOutlined />,
   },
   {
     key: '/user_manage',
     label: '用户管理',
-    icon: <MailOutlined />,
+    icon: <TeamOutlined />,
   },
   {
-    key: '/bb',
-    label: '用户管理',
-    icon: <MailOutlined />,
+    key: '/booking_manage',
+    label: '预定管理',
+    icon: <CarryOutOutlined />,
   },
   {
-    key: '/cc',
+    key: '/statistics',
     label: '统计',
-    icon: <MailOutlined />,
+    icon: <PieChartOutlined />,
   },
 ]
 

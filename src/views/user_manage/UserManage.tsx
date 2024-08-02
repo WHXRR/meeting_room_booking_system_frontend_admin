@@ -9,7 +9,7 @@ interface SearchUser {
   email: string
 }
 
-interface DataType {
+export interface UserTableType {
   id: number
   username: string
   email: string
@@ -27,7 +27,7 @@ export function UserManage() {
     const res = await getUserList(values.username, values.nickName, values.email, pageNo, pageSize)
     const { data } = res.data
     if (res.status === 200 || res.status === 201) {
-      setData(data.users.map((user: DataType) => ({
+      setData(data.users.map((user: UserTableType) => ({
         key: user.username,
         ...user,
       })))
@@ -59,7 +59,7 @@ export function UserManage() {
     })
   }, [pageNo, pageSize, number])
 
-  const columns: TableProps<DataType>['columns'] = useMemo(() => [
+  const columns: TableProps<UserTableType>['columns'] = useMemo(() => [
     {
       title: '用户名',
       dataIndex: 'username',

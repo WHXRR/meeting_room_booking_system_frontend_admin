@@ -10,7 +10,7 @@ interface SearchMeeting {
   capacity: number
   location: string
 }
-interface DataType {
+export interface MeetingRoomTableType {
   id: number
   name: string
   capacity: number
@@ -29,7 +29,7 @@ export function MeetingRoomManage() {
     const res = await getMeetingList(values.name, values.capacity, values.location, pageNo, pageSize)
     const { data } = res.data
     if (res.status === 200 || res.status === 201) {
-      setData(data.meetingRooms.map((item: DataType) => ({
+      setData(data.meetingRooms.map((item: MeetingRoomTableType) => ({
         key: item.name,
         ...item,
       })))
@@ -72,7 +72,7 @@ export function MeetingRoomManage() {
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false)
   const [updateId, setUpdateId] = useState(0)
 
-  const columns: TableProps<DataType>['columns'] = useMemo(() => [
+  const columns: TableProps<MeetingRoomTableType>['columns'] = useMemo(() => [
     {
       title: '名称',
       dataIndex: 'name',
